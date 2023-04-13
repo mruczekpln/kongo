@@ -1,0 +1,19 @@
+{
+  "name": "kongo-api",
+  "version": "0.0.1",
+  "description": "kongo app api",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/yummycoffee/kongo.git"
+  },
+  "author": "yummycoffee",
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1"
+  }
+}
