@@ -19,7 +19,7 @@ export default {
 				// 'text-accent': ''
 			},
 			fontFamily: {
-				main: ['Chivo Mono', 'monospace']
+				main: ['Rubik', 'monospace']
 			}
 		}
 	},
