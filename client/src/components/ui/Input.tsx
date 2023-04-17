@@ -9,7 +9,7 @@ interface InputProps {
 	validate?: (val: string) => any | undefined
 }
 
-function Input({ name, pattern, validate = undefined, required, register }: InputProps) {
+function Input({ name, pattern, validate = undefined, required = true, register }: InputProps) {
 	const RegExpPattern = pattern ? RegExp(pattern) : undefined
 	// console.log(RegExpPattern)
 

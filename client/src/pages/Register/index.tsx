@@ -10,7 +10,7 @@ interface RegisterFormData {
 	lastName: string
 	email: string
 	password: string
-	confirmedPassword: string
+	confirmPassword: string
 }
 
 const RegisterPage = () => {
@@ -18,7 +18,6 @@ const RegisterPage = () => {
 		register,
 		handleSubmit,
 		watch,
-		setError,
 		formState: { errors }
 	} = useForm<RegisterFormData>()
 
@@ -26,9 +25,8 @@ const RegisterPage = () => {
 		e!.preventDefault()
 		console.log('onsubmit')
 
-		toast(JSON.stringify(data))
-		// if (state.stage === 'email') return setState({ stage: 'password', prompt: 'forgot password?' })
-		// if (state.stage === 'password') return toast.success('successfully logged in!')
+		// toast(JSON.stringify(data))
+		toast.success('successfully created an account')
 	}
 
 	const onError: SubmitErrorHandler<RegisterFormData> = (errors, e) => {
@@ -37,26 +35,12 @@ const RegisterPage = () => {
 		if (isRequired) toast.error('you must fill all fields :(')
 
 		if (errors.email && errors.email.type === 'pattern') toast.error('email must match "example@example.com"')
-		// else if (errors.password && errors.password.type === 'pattern')
-		// 	toast.error('at least 1 uppercase and lowecase letter, numeric and special symbol')
-		else {
-			toast.error(errors.root?.message || 'error')
-			console.log(errors)
-		}
-	}
-
-	const beforeSubmit = (e: FormEvent) => {
-		console.log('beforesubmit')
+		else if (errors.confirmPassword) toast.error('passwords must match')
+		else if (errors.password) toast.error('at least 1 uppercase and lowecase letter, numeric and special symbol')
 	}
 
 	const validatePasswords = (val: string) => {
-		if (val !== watch('password')) {
-			// return setError('root.password', {
-			// 	message: 'passwords do not match',
-			// 	type: 'validate'
-			// })
-			return 'password do not match'
-		}
+		if (val !== watch('password')) return 'password do not match'
 	}
 
 	return (
@@ -66,18 +50,21 @@ const RegisterPage = () => {
 					<Logo></Logo>
 					<a href='#' className='underline-offset-1 duration-100 hover:underline'>
 						already have an account?
-						{/* {state.prompt} */}
 					</a>
 				</div>
 				<form
 					onSubmit={handleSubmit(onSubmit, onError)}
 					className='flex h-max w-full flex-col items-center justify-between gap-4 rounded-xl border-2 border-text-secondary p-4 pt-2 shadow-xl'
 				>
-					<Input required={true} register={register} name='first name'></Input>
-					<Input required={true} register={register} name='last name'></Input>
-					<Input required={true} register={register} name='email'></Input>
-					<Input required={true} register={register} name='password'></Input>
-					<Input required={true} register={register} validate={validatePasswords} name='confirmedPassword'></Input>
+					<Input register={register} name='firstName'></Input>
+					<Input register={register} name='lastName'></Input>
+					<Input register={register} pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$' name='email'></Input>
+					<Input
+						register={register}
+						pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+						name='password'
+					></Input>
+					<Input register={register} validate={validatePasswords} name='confirmPassword'></Input>
 					<Button text="let's go!"></Button>
 				</form>
 			</main>

@@ -4,7 +4,7 @@ import './index.css'
 
 import { Toaster } from 'react-hot-toast'
 
-import RegisterPage from './pages/Register'
+import MainRouter from './pages/router'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
@@ -17,7 +17,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 						border: 'solid green',
 						backgroundColor: '#4C4C47',
 						color: '#E5DCC5',
-						width: 'auto',
+						width: 'max-content',
+						maxWidth: '600px',
 						fontFamily: 'JetBrains Mono'
 					}
 				},
@@ -28,13 +29,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 						backgroundColor: '#4C4C47',
 						color: '#E5DCC5',
 						width: 'max-content',
-						maxWidth: '500px',
+						maxWidth: '600px',
 						fontFamily: 'JetBrains Mono'
 					}
 				}
 			}}
 		></Toaster>
-		{/* <LogInPage></LogInPage> */}
-		<RegisterPage></RegisterPage>
+		<MainRouter />
 	</React.StrictMode>
 )

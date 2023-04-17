@@ -35,7 +35,6 @@ const LogInPage = () => {
 
 	const onSubmit: SubmitHandler<LogInFormData> = (data, e) => {
 		e!.preventDefault()
-		// toast(JSON.stringify(data))
 
 		if (state.stage === 'email') return setState({ stage: 'password', prompt: 'forgot password?' })
 		if (state.stage === 'password') return toast.success('successfully logged in!')
