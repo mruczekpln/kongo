@@ -1,8 +1,9 @@
 import { createRef, FormEvent, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import Button from '../../components/ui/Button'
 
+import Button from '../../components/ui/Button'
 import Input from '../../components/ui/Input'
 import Logo from '../../components/ui/Logo'
 
@@ -55,9 +56,11 @@ const LogInPage = () => {
 			<main className='flex w-[300px] flex-col gap-8'>
 				<div className='relative flex h-max w-full items-center justify-between py-2'>
 					<Logo></Logo>
-					<a href='#' className='underline-offset-1 duration-100 hover:underline'>
-						{state.prompt}
-					</a>
+					<Link to={state.stage === 'email' ? '/register' : '/forgot-password'}>
+						<a href='#' className='underline-offset-1 duration-100 hover:underline'>
+							{state.prompt}
+						</a>
+					</Link>
 				</div>
 				<form
 					onSubmit={handleSubmit(onSubmit, onError)}

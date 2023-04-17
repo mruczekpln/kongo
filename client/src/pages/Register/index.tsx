@@ -1,6 +1,7 @@
-import { FormEvent, useEffect } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { Link } from 'react-router-dom'
+
 import Button from '../../components/ui/Button'
 import Input from '../../components/ui/Input'
 import Logo from '../../components/ui/Logo'
@@ -48,9 +49,11 @@ const RegisterPage = () => {
 			<main className='flex w-[500px] flex-col gap-8'>
 				<div className='relative flex h-max w-full items-center justify-between py-2'>
 					<Logo></Logo>
-					<a href='#' className='underline-offset-1 duration-100 hover:underline'>
-						already have an account?
-					</a>
+					<Link to='/login'>
+						<a href='#' className='underline-offset-1 duration-100 hover:underline'>
+							already have an account?
+						</a>
+					</Link>
 				</div>
 				<form
 					onSubmit={handleSubmit(onSubmit, onError)}
