@@ -5,9 +5,9 @@ interface LogoProps {
 const Logo = ({ scale = 1 }: LogoProps) => {
   return (
     <h1
-      className='h-max text-3xl font-bold text-text-primary'
+      className='font-norml h-max w-max rounded-md  font-monospace text-2xl leading-none text-accent underline'
       style={{
-        textShadow: "4px 0px 0px #C14953, 8px 0px 0px #848FA5",
+        textShadow: "1px 0px 0px #AAB9CF, 2px 0px 0px #BDD4E7",
         scale: `${scale}`,
       }}
     >

@@ -1,16 +1,16 @@
 interface ButtonProps {
-	text: string
+  text: string
 }
 
 const Button = ({ text }: ButtonProps) => {
-	return (
-		<button
-			type='submit'
-			className='h-16 w-full rounded-md border-b-4 border-primary-layer bg-primary duration-300 hover:border-accent-layer hover:bg-accent'
-		>
-			{text}
-		</button>
-	)
+  return (
+    <button
+      type='submit'
+      className='hover:border-accent-layer h-16 w-full rounded-md border-b-4 border-accent bg-primary text-white duration-300 hover:bg-accent'
+    >
+      {text}
+    </button>
+  )
 }
 
 export default Button
